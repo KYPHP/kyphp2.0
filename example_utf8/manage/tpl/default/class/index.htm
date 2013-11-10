@@ -1,0 +1,21 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title>后台管理</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script>
+function del(id){
+window.location.href='__URL__/del/id/'+id;
+}
+function view(id){
+window.open('__URL__/view/id/'+id);
+}
+</script>
+
+</head>
+<body>
+<datalist name="form" id="vo" row="2" field="id|编号,sortname|标题:view({$id})" manage="__URL__/edit/id/{$id}|编辑,#|删除:del({$id})" page='true' table='width=500'>
+
+</body>
+
+</html>

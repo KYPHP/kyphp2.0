@@ -1,0 +1,232 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+<style type="text/css">
+body{background: #1A5DB0;}
+body, td{
+	margin: 0px;
+	font: 12px Arial, Helvetica, sans-serif;
+	text-align: left;
+	
+}
+.topmenubg {
+	background: url(images/bg_header.gif) repeat-x;
+}
+a {
+	text-decoration: none;
+	color: #555555
+}
+a:hover {
+	text-decoration: underline;
+}
+ 
+
+.topmenubg {
+	background: url(images/bg_header.gif) repeat-x;
+}
+.topmenu {
+	height: 38px;
+	float: left;
+	min-width: 600px;
+	width: 800px;
+	font-size: 14px;
+	font-weight: bold;
+	color: #555555;
+	margin-top: 24px;
+}
+.topmenu ul {
+	margin: 0px;
+	padding: 0px;
+}
+
+.topmenu li {
+	float: left;
+	border: solid 1px #43809C;
+	border-bottom: none;
+	list-style-type: none;
+	margin-right: 1px;
+	margin-top: 2px;
+}
+
+.topmenu span {
+	display: block;
+	float: left;
+	padding: 0 10px;
+	background: url(images/bg_menu2.gif);
+	height: 25px;
+	line-height: 25px;
+	border: solid 1px #FFFFFF;
+	border-bottom: none;
+	color: #555555;
+}
+
+/* ===========当前链接标签============== */
+
+.menuon {
+	margin-top: 0px;
+	height: 25px;
+	line-height: 25px;
+	border: solid 1px #525C3D;
+	border-bottom: none;
+	background: url(images/bg_menu.gif);
+}
+
+.menuon span {
+	display: block;
+	float: left;
+	padding: 0 10px;
+	background: url(images/bg_menu.gif);
+	height: 25px;
+	line-height: 25px;
+	border: solid 1px #FFFFFF;
+	border-bottom: none;
+	color: #555555;
+}
+.menuon span a {
+	color: #003366;
+}
+ 
+
+</style>
+</head>
+<body>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="topmenubg" id="menu_td">
+<tr>
+<td rowspan="2" width="160px"  align="left" valign="bottom">
+ 
+
+ 
+</td>
+<td width="15px" valign="bottom">
+<img src="images/more_l1.gif" onclick="show_more_menu('left');" style="margin-bottom:8px;" border=0 id="more_left">
+</td>
+<td width="15px" valign="bottom">
+<img src="images/more_r1.gif" onclick="show_more_menu('right');" style="margin-bottom:8px;" border=0 id="more_right">
+</td>
+<td>
+<div class="topmenu">
+<ul>
+<div id="top_menu_div"></div>
+</ul>
+</div>
+</td></tr>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+var menu_array=new Array(
+'快捷菜单|__APP__/public/center|__APP__/public/left',
+'系统功能|__APP__/public/main|__APP__/public/left2'
+
+);
+var menu_td_height=document.getElementById("menu_td").offsetHeight;
+var start_id=0;
+var select_id=0;
+function show_top_menu(){
+	var str='';
+	var last_str='';
+	var jj=-1;
+	for(var i=start_id;i<menu_array.length;i++){
+		jj++;
+		var ar=menu_array[i].split('|');
+		str+='<li id="li'+i+'"><span><a href="#" onclick="sethighlight('+jj+','+i+'); parent.menu.location=\''+ar[2]+'\';return false;">'+ar[0]+'</a></span></li>';
+		document.getElementById("top_menu_div").innerHTML=str;
+
+		var len=0;
+		var lis = document.getElementsByTagName('li');
+		for(var j = 0; j < lis.length; j++) {
+			len=len+lis[j].offsetWidth;
+		}
+		if(len>=761){
+			document.getElementById("top_menu_div").innerHTML=last_str;
+			break;
+		}
+		last_str=str;
+	}
+	show_more_icon();
+	sethigh__light();
+}
+show_top_menu();
+
+function sethighlight(n,m) {
+	var lis = document.getElementsByTagName('li');
+	for(var i = 0; i < lis.length; i++){
+		lis[i].className = '';
+	}
+	select_id=m;
+	lis[n].className = 'menuon';
+}
+
+function sethigh__light() {
+	var lis = document.getElementsByTagName('li');
+	for(var i = 0; i < lis.length; i++){
+		if(lis[i].id=='li'+select_id){
+			lis[i].className = 'menuon';
+		}else{
+			lis[i].className = '';
+		}
+	}
+}
+
+function show_more_menu(t){
+	if(t=='left')
+	{
+		if(start_id<(menu_array.length-1)){
+			start_id++;
+		}
+		show_top_menu();
+	}
+	else if(t=='right')
+	{
+		if(start_id>0){
+			start_id--;
+		}
+		show_top_menu();
+	}
+}
+
+function show_more_icon(){
+	document.getElementById("more_left").style.cursor='';
+	document.getElementById("more_right").style.cursor='';
+	if(start_id==(menu_array.length-1)){
+		document.getElementById("more_left").src="images/more_l1.gif";
+		document.getElementById("more_right").style.cursor='hand';
+		document.getElementById("more_right").src="images/more_r2.gif";
+		if(window.ActiveXObject==null){
+			document.getElementById("more_right").style.cursor='pointer';
+		}else{
+			document.getElementById("more_right").style.cursor='hand';
+		}
+	}else if(start_id==0){
+		document.getElementById("more_right").src="images/more_r1.gif";
+		document.getElementById("more_left").src="images/more_l2.gif";
+		if(window.ActiveXObject==null){
+			document.getElementById("more_left").style.cursor='pointer';
+		}else{
+			document.getElementById("more_left").style.cursor='hand';
+		}
+		
+	}else{
+		document.getElementById("more_left").src="images/more_l2.gif";
+		document.getElementById("more_right").src="images/more_r2.gif";
+		if(window.ActiveXObject==null){
+			document.getElementById("more_left").style.cursor='pointer';
+			document.getElementById("more_right").style.cursor='pointer';
+		}else{
+			document.getElementById("more_left").style.cursor='hand';
+			document.getElementById("more_right").style.cursor='hand';
+		}
+	}
+}
+
+function load_window(){
+	sethighlight(0,0);
+	var ar=menu_array[0].split('|');
+	parent.main.location=ar[1];
+	parent.menu.location=ar[2];
+}
+load_window();
+//-->
+</SCRIPT>
+</body>
+</html>

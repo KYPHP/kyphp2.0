@@ -1,0 +1,45 @@
+{$header;}
+
+
+<!-- Content START -->
+<div id="Content">
+
+<!-- Side ContentWrapper START -->
+<div id="ContentWrapper">
+
+<!-- Side SC START -->
+<div class="SC">
+
+<div class="Post" style="padding-bottom: 50px;">
+
+<div class="PostHead">
+ <?php foreach($head_list as $list){
+ 
+ 
+ }?>
+</div>
+  
+<div class="PostContent">
+<p>{$test;}</p>
+<?php 
+
+foreach($form_list as $value){ ?>
+  
+<p><a href="<?php echo $this->url->link('info/view' ,"&id=".$value['id']);?>"><?php echo $value['title'];?></a></p>
+<p><?php echo $value['content'];?></p>
+<?php }?>
+<pre></pre>
+ </div>
+ 
+<ul class="PostCom">
+ <li><span>Comments Off</span></li>
+</ul>
+<div>{$pagination;}</div>
+</div>
+<!-- Post END -->
+
+{$right;}
+</div>
+<!-- Content END -->
+ 
+{$footer;}

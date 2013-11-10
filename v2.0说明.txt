@@ -1,0 +1,144 @@
+<pre>
+-------------------------------------------------------------     
+   版权所有：老顽童 非授权请勿商业用途，违者必究  联系QQ：974005652          
+-------------------------------------------------------------      
+感谢大家对KYPHP的支持！
+  
+KYPHP是经过两年的开发，终于从原来的v1.0版本到成熟版本v2.0,成熟版更强大，KYPHP2.0不仅支持以前所有的功能，还支持多数据库，多语言，多模版，多app,多缓存，多编码格式，模板布局，自定义类，自动加载公共类库。其扩展性和可用性堪比yii、zend等框架，并拥有高效简洁的语法，使你能在大项目中游刃有余。
+KYPHP 2.0将utf8和gbk合并为一个文件，只需要定义下编码就可以用各种编码格式
+KYPHP已应用于许多大项目中，正是因为这些大项目，KYPHP才变得日渐成熟！感谢你们的使用！
+
+一、入口文件及配置
+1.入口文件
+<?php
+define('APP_PATH',dirname(__FILE__));//当前项目路径
+define('KYPHP_PATH',APP_PATH.'/../kyphp/');//KYPHP框架路径
+
+require KYPHP_PATH."kyphp.php";
+
+KYPHP::Run();
+
+/*
+//如果要自定义config路径，需要定义__CONFIG__
+define('__CONFIG__',APP_PATH.'/inc/config.php');
+$config=require(__CONFIG__);
+KYPHP::Run($config);
+*/
+
+ 
+?>
+2.配置config
+<?php
+if (!defined('KYPHP_PATH'))	exit('未定义KY_PATH');
+$array = array(
+	'WEBURL'=>'http://localhost/kyphpfrm2.0/blog',//网站url
+	'SSLURL'=>'https://localhost/kyphpfrm2.0/blog',//如果有ssl，https则配置此处
+    'URL_ROUTER_ON' => true,
+    'DEFAULT_MODULE' =>'home/index',//默认路由
+    'PATH_KEY'=>5, // URL类型,兼容模式请设置为3	//2是伪静态 1是pathinfo 4为静态,5为自定义url
+	'URL_MODULE'=>'public/url',//PATH_KEY为5时必须指定,url类的路由
+	'DB_CHARSET'=>'utf8',
+	'DB_HOST'=>'localhost',
+	'DB_NAME'=>'kyfrm_utf8',
+	'DB_USER'=>'test',
+	'DB_PWD'=>'123456',
+	'DB_PREFIX'=>'ky_',//数据库前缀
+	'DB_TYPE'=>'mysql',数据库类型，可选mysql,pdo_mysql,mysqli,mmsql,postgre等
+	'_db'=>array(
+		'mysqli'=>array('DB_CHARSET'=>'utf8','DB_HOST'=>'localhost',	'DB_NAME'=>'kyfrm_utf8',	'DB_USER'=>'test',	'DB_PWD'=>'123456','DB_PREFIX'=>'ky_',	'DB_TYPE'=>'mysqli'),//$this->_db['db1']
+		'pdo'=>array('DB_HOST'=>'localhost',	'DB_NAME'=>'kyfrm',	'DB_USER'=>'test',	'DB_PWD'=>'123456','DB_PREFIX'=>'ky_',	'DB_TYPE'=>'pdo_mysql'),//多数据库设置，$this->_db[$key]键值$this->_db[1]
+	
+	),
+	'cache'=>array('driver'=>'file',//支持redis,file,memcache
+					'host'=>'127.0.0.1',
+					'port'=>'11211',
+					
+	),
+	'_cache'=>array(	
+		//'memcache'=>array('driver'=>'memcache',	'host'=>'127.0.0.1','port'=>'11211'),//多缓存使用
+		'file'=>array('driver'=>'file'),
+	
+	),
+	'app_dir'=>'app',//项目文件夹
+	//'DEFAULT_M_PATH' =>'m',//指定生成M文件路径 空为'model'
+	//'DEFAULT_C_PATH' =>'c',//指定生成LIB文件路径，空为'controller'	
+	//'DEFAULT_V_PATH' =>'v',//指定生成TPL文件路径，空为'tpl'
+	//'DEFAULT_L_PATH' =>'l',//指定生成TPL文件路径，空为'language'
+	//'DEFAULT_CMD_PATH'=>'common',//指定生成TPL文件路径，空为'common'
+	'error_filename'=>'log.txt',//日志文件名
+	'error_display'=>'on',//输出错误
+	'error_log'=>'on',//记录错误
+	'debug'=>'on',//开启debug trace
+	'DIR_LOGS'=>'log',//错误日志目录
+	'templete_ext'=>'.html',//模板扩展名
+	'code'=>'zh-cn',//默认zh-cn 当前语言
+'	DIR_CACHE'=>'cache',//缓存目录
+    
+);
+return $array;
+
+?>
+二、常量定义
+1.路径类
+KYPHP_PATH/KY_PATH  是框架的路径,KY_PATH已废弃
+__CONFIG__ 是系统config.php的路径，包含config.php，当然你可以命成其它名字
+APP_PATH 是当前项目的路径
+DIR_CACHE 缓存目录，默认为项目下cache,需要在config.php设置，对应config里DIR_CACHE
+DIR_LOGS 日志目录，记录错误或用户自定log，需要在config里设置,对应config里DIR_LOGS
+DEFAULT_M_PATH 项目model层路径
+DEFAULT_C_PATH项目controller层路径，在v1版本中同DEFAULT_LIB_PATH
+DEFAULT_V_PATH项目view层路径, 在v1版本中同DEFAULT_TPL_PATH
+DEFAULT_L_PATH项目language层路径
+DEFAULT_CMD_PATH默认common的路径，即cmd.php  （function）的路径
+2.设置类
+__CHARSET__字符编码设置utf-8,gbk,gb2312
+__WEBURL__网站url
+DEFAULT_MODULE 默认的路由，默认为index/index
+__URL__当前路由的url
+__APP__当前项目的url
+DEFAULT_TPL 是默认的tpl 文件夹,默认为default,在config里是DEFAULT_TPL
+
+三、模板使用
+1、使用include <include file="public:top"> 可调用public文件夹下的top.html
+2、使用渲染,
+		$this->data['header']=$this->view('public/header'); 可调public 路由的header
+		$this->data['footer']=$this->view('public/footer');
+		$this->data['right']=$this->view('public/right');//调
+3、向模板传值
+$this->data[]  等同于$this->assign($key,$value);
+$this->lable(“lablename”,”hello world!”)
+$this->volist(“list”,array)
+$this-> volist (“list”,array,”list_1″,array) 中的list_1
+$this->datalist(“list”,array)
+
+KYPHP标签
+标签类：
+3.1.<lable>
+语法：<lable name=”lablename”>表示一个label，name的值，对应该文件actionclass的$this->lable(“lablename”,”hello world!”)
+为了方便可以将该控件简化为$lable[lablename]
+3.2.<volist>
+语法：<volist name=”list” id=”vo”>**</volist>表示一个循环列表，对应该文件actionclass的$this->volist(“list”,array)
+**中用{$vo.title}或{$title}直接表示值
+3.3.<list>:用法同<volist>用在其嵌套中对应的值是$this->volist(“list”,array,”list_1″,array) 中的list_1
+3.4.<datalist>
+语法：<datalist name=”list” id=”" row=”" field=”字段|名称:js%css” manage=”URL|显示名:js%css” edit=”true” title=”true” page=”true” table=”table属性” list=”table或li”>
+对应文件actionclass的$this->datalist(“list”,array)
+
+四、基类的使用
+五、数据库管理
+六、缓存管理
+七、自定义类的使用
+八、路由分发模式和自定义url路由
+九、语言包的使用
+十、模板标签详解
+十一、高级应用
+1、templete
+2、拆分app
+
+
+线上blog示例,为linux +nginx环境，
+http://www.btung.com/ky/kyphpfrm2.0/blog/
+------------------------------------------------------------------
+官方博客:www.ky53.net
+--------------------------------------------------------------------
+zhx626@126.com 或QQ974005652 或群105718680

@@ -1,0 +1,109 @@
+<html>
+
+<head>
+<title>后台管理 </title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+
+<link rel="stylesheet" href="images/style.css" type="text/css">
+
+<SCRIPT language=JavaScript>
+function killErrors() {
+	return true;
+}
+window.onerror = killErrors;
+</SCRIPT>
+<SCRIPT language=javascript>
+function showson(ss){
+	if (document.getElementById(ss).style.display == 'none'){
+		document.getElementById(ss).style.display = '';
+	}else{
+		document.getElementById(ss).style.display = 'none';
+	}
+}
+function showmenu(ss){
+	for(i=0;i<500;i++){
+		obj=document.getElementById("s"+i);	
+		if(ss=='open'){
+			if(obj && obj.style.display=="none"){
+				obj.style.display="";
+			}
+		}else{
+			if(obj && obj.style.display==""){
+				obj.style.display="none";
+			}
+		}
+	}
+	
+}
+</script>
+</head>
+<body leftmargin="0" topmargin="0" >
+<div id="leftmenu"> 
+  <table cellspacing='0' cellpadding='0' class='tablewidth_menu'>
+    <tr> 
+      <td class="head_menu"><a href='javascript:' onclick='showson("s")'>当前状态</a></td>
+    </tr>
+    <tr> 
+      <td class="c_menu"> 
+        <table width='100%' cellspacing='0' cellpadding='0' style='display:' id=s>
+          <tr> 
+            <td style='padding-left:10px;line-height:16px;'> 帐号:<strong>$lable[username] </strong> 
+              <br>
+              级别: 
+              
+              <a title='$lable[key]'>$lable[key]</a> 
+              
+              <br>
+              <a href="index.php?lfj=center&job=map" target="main">管理首页</a> <a href=__URL__/loginout target=main>安全退出</a><br>
+              
+              <a href="javascript:" onClick="return showmenu('open')" >全部展开</a> 
+              <a href="javascript:" onClick="return showmenu('close')" >全部收缩</a> 
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  
+  <table cellspacing='0' cellpadding='0' class='tablewidth_menu'>
+    <tr> 
+      <td class='head_menu'><a href='javascript:' onclick='showson("s1")'>管理中心</a></td>
+    </tr>
+    <tr> 
+      <td class='c_menu'> 
+        <table width='100%' cellspacing='0' cellpadding='0' style='display:' id='s1'>
+          <tr><td>
+           数据管理 | <A HREF='__APP__/aticle/add' target='main' >添加</A> <A HREF='__APP__/aticle/' target='main' >管理</A>
+          </td></tr>
+		  <tr><td>
+          分组管理 | <A HREF='__APP__/class/add' target='main' >添加</A> <A HREF='__APP__/class/' target='main' >管理</A>
+          </td></tr>
+		  <tr><td>
+           <A HREF='__APP__/user/edit' target='main' >密码管理</A> 
+          </td></tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  
+  <table cellspacing='0' cellpadding='0' class='tablewidth_menu'>
+    <tr> 
+      <td class="head_menu"><a href='javascript:' onclick='showson("s98")' style="color:#666;">版权所有</a></td>
+    </tr>
+    <tr> 
+      <td class="c_menu"> 
+        <table width='100%' cellspacing='0' cellpadding='0' style='display:' id='s98'>
+          <tr> 
+            <td style='padding-left:10px;line-height:16px;color:#666;'>
+            by 老顽童</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,99 @@
+#commentform p {
+    margin: 0 ! important;
+    padding: 0 ! important;
+}
+#comment-providers-select-message {
+ float: left;
+ padding-top: 3px ! important;
+}
+#comment-providers-select-message p {
+    line-height: 20px;
+}
+ul#all-comment-providers {
+ float: right;
+ list-style-type: none !important;
+ margin: 0 !important;
+ overflow: hidden;
+ padding: 0 !important;
+ width: 150px;
+ text-align: right;
+}
+ul#all-comment-providers li {
+ border: medium none !important;
+ list-style-type: none !important;
+ margin: 0 !important;
+ padding: 0 !important;
+ display: inline !important;
+ background: none ! important;
+}
+.comment-provider {
+ clear: both;
+}
+
+#all-comment-providers li a {
+    text-decoration: none;
+}
+#all-comment-providers li a img {
+    vertical-align: -25%;
+    padding: 2px ! important;
+    margin: 0 ! important;
+    display: inline ! important;
+	background: none !important;
+	border: none !important;
+}
+#all-comment-providers li a span {
+    display: none;
+    text-decoration: none;
+    line-height: 16px;
+    padding-left: 3px;
+    padding-right: 3px;
+
+}
+
+#all-comment-providers li a.comment-provider-selected span {
+    display: inline;
+}
+#comments #cwrap label {
+    background: none ! important;
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#browserid img {
+    padding: 0px 0px 0px 3px ! important;
+    margin: 3px 0 3px 3px ! important;
+    display: inline ! important;
+}
+
+.blogcom-oauth-comments-identity ,
+.blogcom-oauth-comments-identity p ,
+#commentform .comment-notes {
+    margin-top: 10px ! important;
+    margin-bottom: 10px ! important;
+}
+
+#commentform label {
+    top: auto ! important;
+    left: auto ! important;
+    position: inherit ! important;
+    display: inline ! important;
+    float: none ! important;
+}
+#commentform .comment-form-comment label {
+    display: block ! important;
+    margin: 3px 0px ! important;
+}
+#commentform input,
+#commentform textarea {
+    margin: 3px 0 3px 3px ! important;
+    padding: 2px ! important;
+    border: 1px solid #DDDDDD ! important;
+    float: none ! important;
+}
+.comment-provider {
+    text-align: left ! important;
+}
+.comment-notes a {
+    color: inherit ! important;
+    text-decoration: underline;
+}

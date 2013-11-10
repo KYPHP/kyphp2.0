@@ -1,0 +1,2 @@
+<?php //¿ÆÒÚphprequire KY_PATH."/kyclass/mysql_class.php";
+$mysql=new MYSQL_DB();$conf=require APP_PATH."/inc/config.php";$dbcharset=$conf[DB_CHARSET];$mysql->connect($conf[DB_HOST],$conf[DB_USER],$conf[DB_PWD],$conf[DB_NAME],"");require KY_PATH."/kyclass/action_class.php"; $dbpre=$conf[DB_PREFIX];?>

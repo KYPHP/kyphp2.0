@@ -1,0 +1,2 @@
+线上blog示例,为linux +nginx环境，
+http://www.btung.com/ky/kyphpfrm2.0/blog/

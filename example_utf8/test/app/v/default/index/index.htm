@@ -1,0 +1,17 @@
+<include file="public:top">
+<script>
+
+function view(id){
+window.open('__URL__/view/id/'+id);
+}
+</script>
+</head>
+
+<body>
+<ul>
+<volist name="list" id="vo">
+<li><a href="__URL__/view/id/{$id}" target="_blank">{$title}</a></li>
+</volist>
+</ul>
+</body>
+</html>

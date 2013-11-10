@@ -1,0 +1,33 @@
+DirectoryIndex index.php index.htm index.html
+  
+Options -Indexes   
+Options +FollowSymLinks   
+  
+#允许解析文件中的SSI指令   
+Options +Includes   
+  
+#定义404，500错误页面   
+ErrorDocument 404 /404.htm   
+ErrorDocument 500 /404.htm   
+  
+#定义目录索引页面   
+DirectoryIndex index.php   
+order deny,allow   
+  
+RewriteEngine on   
+  
+#设置根目录   
+RewriteBase /kyphpfrm2.0/example_utf8/exam_url/ 
+
+  
+#去掉链接地址中index.php字符串   
+RewriteCond %{REQUEST_FILENAME} !-f   
+RewriteCond %{REQUEST_FILENAME} !-d   
+RewriteCond $1 !^(index.php|images|robots\.txt)  
+RewriteRule ^html/(.*)$ index.php?k=$1 [L]   # PATH_KEY 4
+RewriteRule ^index.php\/(.*)$ index.php?k=$1 [L]   # PATH_KEY 1
+RewriteCond %{REQUEST_FILENAME} !-f   
+RewriteCond %{REQUEST_FILENAME} !-d   
+RewriteRule ^(.*)$ index.php?k=$1 [L]   # PATH_KEY 2
+ 
+

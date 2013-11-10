@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title>后台管理</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type="text/javascript" charset="utf-8" src="editor/kindeditor.js"></script>
+<script type="text/javascript">
+    KE.show({
+        id : 'content_1' //TEXTAREA输入框的ID
+   });
+</script>
+
+
+</head>
+<body>
+<form name="form1" method="post" action="__URL__/editok">
+
+<table width="800" border="0" cellpadding="0" cellspacing="1" bgcolor="#999999">
+  <tr>
+    <td width="106" height="30" bgcolor="#FFFFFF">标题：</td>
+    <td width="580" bgcolor="#FFFFFF"><label>
+      <input name="title" type="text" id="title" value="$lable[aticle][title]"><input name="id" type="hidden" value="$lable[aticle][id]">
+    </label></td>
+  </tr>
+  <tr>
+    <td height="30" bgcolor="#FFFFFF">类别：</td>
+    <td bgcolor="#FFFFFF">
+      <select name="sortid" id="sortid">
+	  <volist name="sort" id="vo">
+	
+	  <option value='{$id}' <if condition=($lable[aticle][sortid]=={$vo.id})>selected</if>>{$sortname}</option>
+	  </volist>
+        </select>
+    </label></td>
+  </tr>
+  <tr>
+    <td height="30" bgcolor="#FFFFFF">审核：</td>
+    <td bgcolor="#FFFFFF"><label>
+      <input name="ischeck" type="checkbox" id="ischeck" value="1" <?if($lable['aticle']['ischeck']==1)echo "checked"?>>
+    </label></td>
+  </tr>
+   <tr>
+    <td height="30" bgcolor="#FFFFFF">内容：</td>
+    <td bgcolor="#FFFFFF"><textarea name="content" id="content_1"  style="width:700px;height:300px;"><?=$lable['aticle']['content']?></textarea></td>
+  </tr>
+   <tr>
+    <td height="30" bgcolor="#FFFFFF">&nbsp;</td>
+    <td bgcolor="#FFFFFF"><label>
+      <input type="submit" name="Submit" value="提交">
+    </label></td>
+  </tr>
+</table>
+</form>
+</body>
+
+</html>

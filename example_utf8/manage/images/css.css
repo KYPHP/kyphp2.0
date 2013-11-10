@@ -1,0 +1,51 @@
+BODY {
+	COLOR: #000000; FONT-SIZE: 12px
+}
+TD {
+	COLOR: #000000; FONT-SIZE: 12px
+}
+TH {
+	COLOR: #000000; FONT-SIZE: 12px
+}
+BODY {
+	MARGIN: 0px
+}
+A:link {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #003366; TEXT-DECORATION: underline
+}
+A:active {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+.login_text {
+	FONT-FAMILY: "ºÚÌå", Arial, Helvetica, sans-serif; COLOR: #666666; FONT-SIZE: 20px; FONT-WEIGHT: 100
+}
+.box1 {
+	BORDER-BOTTOM: #85ade1 1px solid; BORDER-LEFT: #85ade1 1px solid; BACKGROUND-COLOR: #e8efff; BORDER-RIGHT: #85ade1 1px solid
+}
+.box2 {
+	BORDER-BOTTOM: #9cbde6 1px solid; BORDER-LEFT: #9cbde6 1px solid; BACKGROUND-COLOR: #ffffff; BORDER-RIGHT: #9cbde6 1px solid
+}
+.white {
+	LINE-HEIGHT: 23px; COLOR: #ffffff; FONT-SIZE: 12px
+}
+.white A:link {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+.white A:visited {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+.white A:hover {
+	COLOR: #ffffff; TEXT-DECORATION: underline
+}
+.white A:active {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+.title_text {
+	LINE-HEIGHT: 23px; COLOR: #005aaa; FONT-SIZE: 12px; FONT-WEIGHT: bold
+}

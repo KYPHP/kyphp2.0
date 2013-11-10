@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title>后台管理</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type="text/javascript" charset="utf-8" src="editor/kindeditor.js"></script>
+<script type="text/javascript">
+    KE.show({
+        id : 'content_1' //TEXTAREA输入框的ID
+   });
+</script>
+
+
+</head>
+<body>
+<form name="form1" method="post" action="__URL__/editok">
+
+<table width="800" border="0" cellpadding="0" cellspacing="1" bgcolor="#999999">
+<tr>
+    <td width="106" height="30" bgcolor="#FFFFFF">用户名：</td>
+    <td width="580" bgcolor="#FFFFFF"><label>
+      <?php echo isset($_COOKIE['username'])?$_COOKIE['username']:'';?><input name="username" type="hidden" value="<?php echo isset($_COOKIE['username'])?$_COOKIE['username']:'';?>">
+    </label></td>
+  </tr>
+  <tr>
+    <td width="106" height="30" bgcolor="#FFFFFF">密码：</td>
+    <td width="580" bgcolor="#FFFFFF"><label>
+      <input name="password" type="text" id="title" value="$lable[form][password]"><input name="id" type="hidden" value="$lable[form][id]">
+    </label></td>
+  </tr>
+  <tr>
+    <td height="30" bgcolor="#FFFFFF">&nbsp;</td>
+    <td bgcolor="#FFFFFF"><label>
+      <input type="submit" name="Submit" value="提交">
+    </label></td>
+  </tr>
+</table>
+</form>
+</body>
+
+</html>

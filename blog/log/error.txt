@@ -1,0 +1,1 @@
+2013-11-10 5:46:11 - 警告:session_start() [<a href='function.session-start'>function.session-start</a>]: Cannot send session cache limiter - headers already sent (output started at E:\www\kyphpfrm2.0\kyphp\kyclass\kyphp_base\KYPHP.php:55) at:E:\www\kyphpfrm2.0\kyphp\kyclass\kyphp_base\session.php line:28
